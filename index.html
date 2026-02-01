@@ -57,14 +57,20 @@
 
             <!-- ===== PREDICTION RESULT AREA ===== -->
             <div class="result-box">
-                <h3>Future Pressure Drop Prediction</h3>
+    <h3>Future Pressure Drop Prediction</h3>
 
-                <div class="result-content">
-                    <p><strong>Predicted Pressure Drop:</strong> -- Pa</p>
-                    <p><strong>Risk Level:</strong> --</p>
-                    <p><strong>System Message:</strong> Waiting for input...</p>
-                </div>
-            </div>
+    <div class="result-content">
+        <p>
+            <strong>Predicted Pressure Drop:</strong>
+            <span id="pressureValue">--</span> Pa
+        </p>
+        <p>
+            <strong>Risk Level:</strong>
+            <span id="riskValue" class="risk neutral">--</span>
+        </p>
+        <p id="systemMessage">Waiting for input...</p>
+    </div>
+</div>
 
         </section>
 
@@ -92,3 +98,4 @@
 <script src="script.js"></script>
 </body>
 </html>
+
