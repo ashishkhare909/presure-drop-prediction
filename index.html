@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pressure Drop Prediction Model</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== MAIN CONTAINER ===== -->
+    <div class="app-container">
+
+        <!-- ================= SECTION 1 ================= -->
+        <section class="section common-section">
+            <h1 class="main-title">
+                Pressure Drop Prediction Model <br>
+                <span>for Commercial Hospitals</span>
+            </h1>
+        </section>
+
+        <!-- ================= SECTION 2 ================= -->
+        <section class="section input-section">
+
+            <h2 class="section-heading">
+                Please input some data (dimensions) of the pipe
+            </h2>
+
+            <form id="prediction-form">
+
+                <div class="input-group">
+                    <label for="diameter">Diameter (D)</label>
+                    <input type="number" id="diameter" name="diameter" placeholder="Enter diameter in mm" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="length">Length (L)</label>
+                    <input type="number" id="length" name="length" placeholder="Enter length in meters" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="bend">Bend Angle (θ)</label>
+                    <input type="number" id="bend" name="bend" placeholder="Enter bend angle (0 / 45 / 90)" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="velocity">Velocity (V)</label>
+                    <input type="number" step="0.01" id="velocity" name="velocity" placeholder="Enter velocity (m/s)" required>
+                </div>
+
+                <div class="button-group">
+                    <button type="submit" class="submit-btn">
+                        Submit Values
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- ===== PREDICTION RESULT AREA ===== -->
+            <div class="result-box">
+                <h3>Future Pressure Drop Prediction</h3>
+
+                <div class="result-content">
+                    <p><strong>Predicted Pressure Drop:</strong> -- Pa</p>
+                    <p><strong>Risk Level:</strong> --</p>
+                    <p><strong>System Message:</strong> Waiting for input...</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= SECTION 3 ================= -->
+        <section class="section common-section footer-section">
+
+            <p class="project-info">
+                Final Year Project by <br>
+                <strong>
+                    Shubham Kushwaha &nbsp; | &nbsp;
+                    Anurodh Kumar &nbsp; | &nbsp;
+                    Ashish Khare
+                </strong>
+            </p>
+
+            <p class="guide-info">
+                Guided by <br>
+                Dr. Shashikant Verma <br>
+                Dr. Jitendra Verma
+            </p>
+
+        </section>
+
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
