@@ -16,22 +16,24 @@ form.addEventListener("submit", function (event) {
     // Read input values
     const diameter = document.getElementById("diameter").value;
     const length = document.getElementById("length").value;
-    const bendAngle = document.getElementById("bend").value;
+    const numBends = document.getElementById("numBends").value;
     const velocity = document.getElementById("velocity").value;
+    const inletPressure = document.getElementById("inlet_pressure").value;
 
     // Basic validation
-    if (!diameter || !length || !bendAngle || !velocity) {
-        alert("Please fill all input fields.");
-        return;
-    }
+    if (!diameter || !length || !inletPressure || !velocity || !numBends) {
+    alert("Please fill all input fields.");
+    return;
+}
 
     // Prepare data for backend
-    const inputData = {
-        diameter: parseFloat(diameter),
-        length: parseFloat(length),
-        bend_angle: parseFloat(bendAngle),
-        velocity: parseFloat(velocity)
-    };
+   const inputData = {
+    pipe_diameter: parseFloat(diameter),
+    pipe_length: parseFloat(length),
+    inlet_pressure: parseFloat(inletPressure),
+    velocity: parseFloat(velocity),
+    num_bends: parseFloat(numBends)
+};
 
     // Show loading message
     resultBox.innerHTML = `
