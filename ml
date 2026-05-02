@@ -18,9 +18,6 @@ df = pd.read_csv(data_file)
 # 2. Feature Engineering (VERY IMPORTANT for CFD)
 # =========================
 
-# Velocity = flow_rate / area
-df["velocity"] = df["flow_rate"] / (np.pi * (df["pipe_diameter"] / 2) ** 2)
-
 # Length to diameter ratio
 df["L_by_D"] = df["pipe_length"] / df["pipe_diameter"]
 
@@ -30,9 +27,9 @@ df["L_by_D"] = df["pipe_length"] / df["pipe_diameter"]
 feature_columns = [
     "pipe_diameter",
     "pipe_length",
-    "flow_rate",
     "inlet_pressure",
     "velocity",
+    "num_bends",
     "L_by_D"
 ]
 
