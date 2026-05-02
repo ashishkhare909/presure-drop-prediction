@@ -7,12 +7,7 @@ METADATA_PATH = "pressure_drop_model_metadata.joblib"
 
 model = joblib.load(MODEL_PATH)
 metadata = joblib.load(METADATA_PATH)
-feature_columns = metadata.get("feature_columns", [
-    "diameter",
-    "length",
-    "bend_angle",
-    "velocity",
-])
+feature_columns = metadata["feature_columns"]
 
 app = Flask(__name__)
 
@@ -36,11 +31,27 @@ def predict():
         return jsonify({"error": f"Missing keys: {', '.join(missing_keys)}"}), 400
 
     try:
-        values = [float(data[key]) for key in feature_columns]
-    except (TypeError, ValueError):
-        return jsonify({"error": "All input features must be numeric"}), 400
+    pipe_diameter = float(data["pipe_diameter"])
+    pipe_length = float(data["pipe_length"])
+    inlet_pressure = float(data["inlet_pressure"])
+    velocity = float(data["velocity"])
+    num_bends = float(data["num_bends"])
+except KeyError as e:
+    return jsonify({"error": f"Missing key: {str(e)}"}), 400
+except ValueError:
+    return jsonify({"error": "All inputs must be numeric"}), 400
 
-    features = np.array([values])
+# Feature engineering (MUST match training)
+L_by_D = pipe_length / pipe_diameter
+
+features = np.array([[
+    pipe_diameter,
+    pipe_length,
+    inlet_pressure,
+    velocity,
+    num_bends,
+    L_by_D
+]])
     pressure_drop = float(model.predict(features)[0])
     risk, message = get_risk_and_message(pressure_drop)
 
